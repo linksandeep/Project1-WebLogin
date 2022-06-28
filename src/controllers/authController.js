@@ -30,9 +30,9 @@ const createAuthor = async function (req, res) {
         if (!isValidName(data.fname)) return res.status(400).send({ status: false, msg: "Pls Enter Valid First Name" })
 
         if (!isValid(data.title)) return res.status(400).send({ status: false, msg: "The Title Attributes should not be empty" })
-        
+        if("email" in data){
         let checkunique= await authorModel.find({email:email}) 
-        if(checkunique) return res.status(400).send({status:false,msg:"This Email Id Already Exists Pls Use Another"})
+        if(checkunique) return res.status(400).send({status:false,msg:"This Email Id Already Exists Pls Use Another"})}
         let savedData = await authorModel.create(data);
         res.status(201).send({ status: "True", data: savedData });
     }

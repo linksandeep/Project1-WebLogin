@@ -13,7 +13,7 @@ const createBlog = async function (req, res) {
     try {
         let data = req.body
         let iD = data.authorId
-        let published = data.isPublished
+        //let published = data.isPublished
 
 
         //...........................................  Required Fields validation
@@ -216,7 +216,7 @@ const deleteBlogByQuery = async function (req, res) {
         if (blog.isDeleted == true) return res.status(200).send({ staus: true, msg: "This is Already Deleted" })
         if (Object.keys(blog).length > 0) {
             let data = await blogModel.findOneAndUpdate(obj, { $set: { "isDeleted": true, "deletedAt": deletedTime } }, { new: true })
-            return res.status(200).send({ status: true, msg: "SuccesFully Deleted", blog: data })
+            return res.status(200).send({ status: true, msg: ", blog: dataSuccesFully Deleted" })
         }
         else {
             res.status(400).send({ status: false, msg: "No such Blog Found" })
